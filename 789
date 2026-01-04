@@ -1,0 +1,27 @@
+bank = {}
+with open('input.txt', 'r') as file:
+    for line in file:
+        parts = line.split()
+        if not parts: continue
+        cmd = parts[0]
+        if cmd == 'DEPOSIT':
+            name, amount = parts[1], int(parts[2])
+            bank[name] = bank.get(name, 0) + amount
+        elif cmd == 'WITHDRAW':
+            name, amount = parts[1], int(parts[2])
+            bank[name] = bank.get(name, 0) - amount
+        elif cmd == 'BALANCE':
+            name = parts[1]
+            if name in bank:
+                print(bank[name])
+            else:
+                print('ERROR')
+        elif cmd == 'TRANSFER':
+            name1, name2, amount = parts[1], parts[2], int(parts[3])
+            bank[name1] = bank.get(name1, 0) - amount
+            bank[name2] = bank.get(name2, 0) + amount
+        elif cmd == 'INCOME':
+            p = int(parts[1])
+            for name, balance in bank.items():
+                if balance > 0:
+                    bank[name] += int(balance * p / 100)
