@@ -1,0 +1,16 @@
+import random
+def task_727(input_file, output_file):
+    try:
+        with open(input_file, 'r', encoding='utf-8') as f:
+            data = f.read().split()
+            n = int(data[0])
+            m = int(data[1])
+        random_number = random.randint(n, m)
+        with open(output_file, 'w', encoding='utf-8') as out:
+            out.write(str(random_number))     
+        print("Завдання 727 виконано. Результат у", output_file)
+    except FileNotFoundError:
+        print("Файл не знайдено.")
+    except ValueError:
+        print("Помилка: перевірте вхідні дані.")
+task_727('input_727.txt', 'output.txt')
