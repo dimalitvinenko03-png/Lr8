@@ -1,0 +1,6 @@
+n = int(input())
+with open('input.txt', 'r') as file:
+    lines = file.readlines()
+result = lines[-n:]
+with open('output.txt', 'w') as file:
+    file.writelines(result)
