@@ -1,0 +1,14 @@
+import collections
+import pprint
+def task_726(input_file, output_file):
+    try:
+        with open(input_file, 'r', encoding='utf-8') as f:
+            text = f.read().lower()
+            counter = collections.Counter(text)  
+        with open(output_file, 'w', encoding='utf-8') as out:
+            out.write("Результат підрахунку символів:\n")
+            out.write(pprint.pformat(dict(counter)))
+        print("Завдання 726 виконано. Результат у", output_file)
+    except FileNotFoundError:
+        print("Файл не знайдено.")
+task_726('input_726.txt', 'output.txt')
