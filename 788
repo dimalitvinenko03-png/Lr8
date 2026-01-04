@@ -1,0 +1,6 @@
+import random
+def get_random_word(filename):
+    with open(filename) as f:
+        return random.choice(f.read().split())
+word_random=get_random_word('sowpods.txt')
+print(word_random)
